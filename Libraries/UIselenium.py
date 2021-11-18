@@ -3,6 +3,7 @@ from robot.api.deco import keyword
 from robot.api import logger
 import pageobj
 from robot.utils import asserts
+from selenium.webdriver.chrome.options import Options
 
 
 class UIselenium(SeleniumLibrary):
@@ -26,7 +27,13 @@ class UIselenium(SeleniumLibrary):
         """
         logger.console("Opening Browser: " + browser)
         logger.console("Base URL: "+ base_url)
-        self.open_browser(base_url,browser,remote_url=remote_client)
+        chromeOptions = Options()
+        chromeOptions.headless = True
+        chromeOptions.add_argument('--disable-extensions')
+        chromeOptions.add_argument('--headless')
+        chromeOptions.add_argument('--disable-gpu')
+        chromeOptions.add_argument('--no-sandbox')
+        self.open_browser(base_url,browser, options=chromeOptions,remote_url=remote_client)
         self.title_should_be(page_title)
 
     @keyword('click signin button')
