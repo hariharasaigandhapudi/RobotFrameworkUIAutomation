@@ -1,5 +1,5 @@
 base_url,http://automationpractice.com/index.php
-browser,chrome
+browser,headlesschrome
 page_title,My Store
 username,test
 password,123
