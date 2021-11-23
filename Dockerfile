@@ -14,19 +14,16 @@ LABEL name="Docker build demo Robot Framework"
 
 MAINTAINER "HariHaraSai"
 RUN echo "$PWD"
-WORKDIR /opt/robotframework/Automation
-COPY Libraries /opt/robotframework/Automation/Libraries
-COPY Tests /opt/robotframework/Automation/Tests
+WORKDIR /Automation
+COPY Libraries /Automation/Libraries
+COPY Tests /Automation/Tests
 
 ENV PYTHONPATH "${PYTHONPATH}:/Automation/Libraries"
 # Set the reports directory environment variable
-ENV ROBOT_REPORTS_DIR /opt/robotframework/reports
+ENV ROBOT_REPORTS_DIR /reports
 
 # Set the tests directory environment variable
-ENV ROBOT_TESTS_DIR /opt/robotframework/Tests/Sources
-
-# # Set the working directory environment variable
-# ENV ROBOT_WORK_DIR /opt/robotframework/temp
+ENV ROBOT_TESTS_DIR /Automation/Tests/Sources
 
 # Set up a volume for the generated reports
 VOLUME ${ROBOT_REPORTS_DIR}
@@ -51,4 +48,4 @@ RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd6
     && mv chromedriver /usr/local/bin \
     && chmod +x /usr/local/bin/chromedriver
 
-CMD ["robot /opt/robotframework/Automation/Tests/Sources/."]
+CMD ["robot /Automation/Tests/Sources/."]
