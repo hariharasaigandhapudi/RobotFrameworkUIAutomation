@@ -20,7 +20,7 @@ COPY Tests /Automation/Tests
 
 ENV PYTHONPATH "${PYTHONPATH}:/Automation/Libraries"
 # Set the reports directory environment variable
-ENV ROBOT_REPORTS_DIR /reports
+ENV ROBOT_REPORTS_DIR /Automation/reports
 
 # Set the tests directory environment variable
 ENV ROBOT_TESTS_DIR /Automation/Tests/Sources
