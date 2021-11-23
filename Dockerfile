@@ -17,6 +17,7 @@ RUN echo "$PWD"
 WORKDIR /Automation
 COPY Libraries /Automation/Libraries
 COPY Tests /Automation/Tests
+RUN chmod 777 /Automation
 
 ENV PYTHONPATH "${PYTHONPATH}:/Automation/Libraries"
 
