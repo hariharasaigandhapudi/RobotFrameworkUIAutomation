@@ -14,12 +14,14 @@ LABEL name="Docker build demo Robot Framework"
 
 MAINTAINER "HariHaraSai"
 RUN echo "$PWD"
-WORKDIR /Automation
-COPY Libraries /Automation/Libraries
-COPY Tests /Automation/Tests
-RUN chmod 777 /Automation
+# WORKDIR /Automation
+# COPY Libraries /Automation/Libraries
+# COPY Tests /Automation/Tests
+# RUN chmod 777 /Automation
 
-ENV PYTHONPATH "${PYTHONPATH}:/Automation/Libraries"
+# ENV PYTHONPATH "${PYTHONPATH}:/Automation/Libraries"
+
+ENV PYTHONPATH "${PYTHONPATH}:/Libraries"
 
 RUN apt-get update \
     && apt-get install -y xvfb wget ca-certificates fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 \
