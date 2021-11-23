@@ -12,5 +12,5 @@ Library  SeleniumLibrary
 #    csv=input
 
 Open Login Page
-   Open Browser https://www.tutorialspoint.com/ browser=headlesschrome
+   Open Browser "https://www.tutorialspoint.com/" browser=headlesschrome
    Maximize Browser Window
