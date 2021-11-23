@@ -13,6 +13,7 @@ FROM python:3.10.0
 LABEL name="Docker build demo Robot Framework"
 
 MAINTAINER "HariHaraSai"
+RUN echo "$PWD"
 WORKDIR /Automation
 COPY Libraries /Automation/Libraries
 COPY Tests /Automation/Tests
