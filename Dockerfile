@@ -28,16 +28,6 @@ ENV ROBOT_TESTS_DIR /opt/robotframework/Tests/Sources
 # # Set the working directory environment variable
 # ENV ROBOT_WORK_DIR /opt/robotframework/temp
 
-# Define the default user who'll run the tests
-ENV ROBOT_UID 1000
-ENV ROBOT_GID 1000
-
-RUN mkdir -p ${ROBOT_REPORTS_DIR} \
-  && mkdir -p ${ROBOT_WORK_DIR} \
-  && chown ${ROBOT_UID}:${ROBOT_GID} ${ROBOT_REPORTS_DIR} \
-  && chown ${ROBOT_UID}:${ROBOT_GID} ${ROBOT_WORK_DIR} \
-  && chmod ugo+w ${ROBOT_REPORTS_DIR} ${ROBOT_WORK_DIR}
-
 # Set up a volume for the generated reports
 VOLUME ${ROBOT_REPORTS_DIR}
 
