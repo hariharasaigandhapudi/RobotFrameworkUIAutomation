@@ -14,13 +14,32 @@ LABEL name="Docker build demo Robot Framework"
 
 MAINTAINER "HariHaraSai"
 RUN echo "$PWD"
-WORKDIR /Automation
-COPY Libraries /Automation/Libraries
-COPY Tests /Automation/Tests
-RUN chmod 777 /Automation
+WORKDIR /opt/robotframework/Automation
+COPY Libraries /opt/robotframework/Automation/Libraries
+COPY Tests /opt/robotframework/Automation/Tests
 
 ENV PYTHONPATH "${PYTHONPATH}:/Automation/Libraries"
+# Set the reports directory environment variable
+ENV ROBOT_REPORTS_DIR /opt/robotframework/reports
 
+# Set the tests directory environment variable
+ENV ROBOT_TESTS_DIR /opt/robotframework/Tests/Sources
+
+# # Set the working directory environment variable
+# ENV ROBOT_WORK_DIR /opt/robotframework/temp
+
+# Define the default user who'll run the tests
+ENV ROBOT_UID 1000
+ENV ROBOT_GID 1000
+
+RUN mkdir -p ${ROBOT_REPORTS_DIR} \
+  && mkdir -p ${ROBOT_WORK_DIR} \
+  && chown ${ROBOT_UID}:${ROBOT_GID} ${ROBOT_REPORTS_DIR} \
+  && chown ${ROBOT_UID}:${ROBOT_GID} ${ROBOT_WORK_DIR} \
+  && chmod ugo+w ${ROBOT_REPORTS_DIR} ${ROBOT_WORK_DIR}
+
+# Set up a volume for the generated reports
+VOLUME ${ROBOT_REPORTS_DIR}
 
 RUN apt-get update \
     && apt-get install -y xvfb wget ca-certificates fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 \
@@ -42,4 +61,4 @@ RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd6
     && mv chromedriver /usr/local/bin \
     && chmod +x /usr/local/bin/chromedriver
 
-CMD ["robot Tests/Sources/."]
+CMD ["robot /opt/robotframework/Automation/Tests/Sources/."]
