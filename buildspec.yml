@@ -4,9 +4,10 @@ phases:
   install:
     commands:
       - echo ==========  install phase...  ====================
+      - sudo apt-get install python-pip
       - python --version
       - pip install --upgrade pip
-      - apt-get update
+#       - apt-get update
       - sudo pip install pyvirtualdisplay
       - echo # Chrome Repo
       - sudo apt-get -y install fonts-liberation xdg-utils libxss1 libappindicator1 libindicator7 gconf-service libasound2-dev libgconf-2-4 libnspr4 libx11-xcb1 libnss3 xdg-utils
