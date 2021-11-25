@@ -48,4 +48,4 @@ RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd6
     && mv chromedriver /usr/local/bin \
     && chmod +x /usr/local/bin/chromedriver
 
-CMD ["robot /Automation/Tests/Sources/."]
+CMD ["robot Tests/Sources/."]
