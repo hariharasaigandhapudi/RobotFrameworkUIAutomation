@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+    test:
+        network_mode: host
+        image: robotframework-chrome
+        shm_size: "256M"
+        environment:
+            USERNAME: Hari Hara Sai
+        volumes: [
+           "$PWD/Tests:/Automation/Tests",
+           "$PWD/reports:/Automation/reports",
+           "$PWD/Libraries:/Automation/Libraries"
+        ]
