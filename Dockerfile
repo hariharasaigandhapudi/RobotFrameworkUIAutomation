@@ -7,8 +7,8 @@
 #  3. robot Tests/Sources/. --outputdir Tests/Results
 
 ###
-
-FROM python:3.10.0
+FROM ubuntu:18.04
+# FROM python:3.10.0
 
 LABEL name="Docker build demo Robot Framework"
 
@@ -29,7 +29,8 @@ ENV ROBOT_TESTS_DIR /Automation/Tests/Sources
 VOLUME ${ROBOT_REPORTS_DIR}
 
 RUN apt-get update \
-    && apt-get install -y xvfb wget ca-certificates fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 \
+    && apt-get install -y build-essential libssl-dev libffi-dev python-dev \
+		python-pip python-dev gcc phantomjs firefox \
        libatspi2.0-0 libcups2 libdbus-1-3 libgbm1 libgtk-3-0 libnspr4 libnss3 \
        libxcomposite1 libxkbcommon0 libxrandr2 xdg-utils ntpdate openssl
 
