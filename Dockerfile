@@ -14,7 +14,7 @@ RUN apt-get update \
        libxcomposite1 libxkbcommon0 libxrandr2 xdg-utils ntpdate openssl
 
 RUN apt-get install -y nginx git python-setuptools python-dev
-RUN easy_install pip
+
 
 RUN python3 -m pip install robotframework && pip install robotframework-requests &&  pip install robotframework-seleniumlibrary \
     && pip install xvfbwrapper && pip install robotframework-xvfb && pip install certifi && pip install asn1crypto \
