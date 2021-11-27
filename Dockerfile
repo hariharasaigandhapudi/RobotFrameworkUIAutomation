@@ -1,9 +1,10 @@
-FROM python:3.10.0 && ubuntu:latest
+FROM ubuntu:latest
 
 WORKDIR /home/Automation
 COPY Libraries /home/Automation/Libraries
 COPY Tests /home/Automation/Tests
 
+FROM python:3.10.0
 RUN apt-get update && apt-get install --quiet --assume-yes python-pip unzip firefox wget
 
 RUN wget --no-verbose https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
