@@ -13,14 +13,6 @@ RUN apt-get update \
        libatspi2.0-0 libcups2 libdbus-1-3 libgbm1 libgtk-3-0 libnspr4 libnss3 \
        libxcomposite1 libxkbcommon0 libxrandr2 xdg-utils ntpdate openssl
 
-RUN apt-get install -y nginx git python-setuptools python-dev
-
-
-RUN pip install robotframework && pip install robotframework-requests &&  pip install robotframework-seleniumlibrary \
-    && pip install xvfbwrapper && pip install robotframework-xvfb && pip install certifi && pip install asn1crypto \
-    && pip install bcrypt && pip install robotframework-sshlibrary && pip install cryptography && pip install pyOpenSSL \
-    && pip install idna && pip install requests[security] && pip install PyYAML
-
 # install chrome and chromedriver in one run command to clear build caches for new versions (both version need to match)
 RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
     && dpkg -i google-chrome*.deb \
@@ -30,5 +22,15 @@ RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd6
     && rm chromedriver_linux64.zip \
     && mv chromedriver /usr/local/bin \
     && chmod +x /usr/local/bin/chromedriver
+ 
+FROM python:3.10
+    
+RUN apt-get install -y nginx git python-setuptools python-dev
+
+
+RUN pip install robotframework && pip install robotframework-requests &&  pip install robotframework-seleniumlibrary \
+    && pip install xvfbwrapper && pip install robotframework-xvfb && pip install certifi && pip install asn1crypto \
+    && pip install bcrypt && pip install robotframework-sshlibrary && pip install cryptography && pip install pyOpenSSL \
+    && pip install idna && pip install requests[security] && pip install PyYAML
 
 CMD ["robot /home/Automation/Tests/Sources/."]
