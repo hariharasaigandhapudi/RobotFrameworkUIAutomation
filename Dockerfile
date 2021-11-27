@@ -16,7 +16,7 @@ RUN apt-get update \
 RUN apt-get install -y nginx git python-setuptools python-dev
 
 
-RUN python3 -m pip install robotframework && pip install robotframework-requests &&  pip install robotframework-seleniumlibrary \
+RUN pip install robotframework && pip install robotframework-requests &&  pip install robotframework-seleniumlibrary \
     && pip install xvfbwrapper && pip install robotframework-xvfb && pip install certifi && pip install asn1crypto \
     && pip install bcrypt && pip install robotframework-sshlibrary && pip install cryptography && pip install pyOpenSSL \
     && pip install idna && pip install requests[security] && pip install PyYAML
