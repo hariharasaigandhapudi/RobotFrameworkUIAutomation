@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM python:3.10.0 && ubuntu:latest
 
 WORKDIR /home/Automation
 COPY Libraries /home/Automation/Libraries
