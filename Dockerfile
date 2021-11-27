@@ -13,6 +13,9 @@ RUN apt-get update \
        libatspi2.0-0 libcups2 libdbus-1-3 libgbm1 libgtk-3-0 libnspr4 libnss3 \
        libxcomposite1 libxkbcommon0 libxrandr2 xdg-utils ntpdate openssl
 
+RUN apt-get install -y nginx git python-setuptools python-dev
+RUN easy_install pip
+
 RUN python3 -m pip install robotframework && pip install robotframework-requests &&  pip install robotframework-seleniumlibrary \
     && pip install xvfbwrapper && pip install robotframework-xvfb && pip install certifi && pip install asn1crypto \
     && pip install bcrypt && pip install robotframework-sshlibrary && pip install cryptography && pip install pyOpenSSL \
