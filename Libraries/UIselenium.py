@@ -4,6 +4,8 @@ from robot.api import logger
 import pageobj
 from robot.utils import asserts
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 class UIselenium(SeleniumLibrary):
@@ -33,7 +35,15 @@ class UIselenium(SeleniumLibrary):
         chromeOptions.add_argument('--headless')
         chromeOptions.add_argument('--disable-gpu')
         chromeOptions.add_argument('--no-sandbox')
-        self.open_browser(base_url,browser, options=chromeOptions,remote_url=remote_client)
+        if browser== "chrome":
+            browsermanager = ChromeDriverManager()
+            self.open_browser(url=base_url, browser=browser,executable_path=browsermanager.install())
+        elif browser== "ff":
+            browsermanager = GeckoDriverManager()
+            self.open_browser(url=base_url, browser=browser,executable_path=browsermanager.install())
+        elif browser== "edge":
+            browsermanager = EdgeChromiumDriverManager()
+            self.open_browser(url=base_url, browser=browser,executable_path=browsermanager.install())
         self.title_should_be(page_title)
 
     @keyword('click signin button')
